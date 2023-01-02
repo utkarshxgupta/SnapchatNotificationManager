@@ -1,6 +1,7 @@
 package com.utkarshxgupta.snapnotifmanager;
 
 import android.content.DialogInterface;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.color.MaterialColors;
 import com.utkarshxgupta.snapnotifmanager.Adapter.WhitelistAdapter;
 import com.utkarshxgupta.snapnotifmanager.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -80,12 +82,12 @@ public class RecylerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         Paint p = new Paint();
 
         if(dX>0) {
-            p.setColor(Color.rgb(187,134,252));
+            p.setColor(Color.rgb(98, 165, 204));
             c.drawPath(path, p);
             icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.edit);
         }
         else {
-            p.setColor(Color.rgb(237, 116, 128));
+            p.setColor(Color.rgb(227, 96, 86));
             c.drawPath(path, p);
             icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.trash);
         }
