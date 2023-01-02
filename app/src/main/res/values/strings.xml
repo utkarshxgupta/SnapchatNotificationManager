@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SnapNotif Manager</string>
+
+    <string name="service_label">NotificationListenerExampleService</string>
+    <string name="image_change_explanaton">The Image bellow will change when a Notification is intercepted</string>
+
+    <!-- Placeholder string for if the image doesn't load -->
+    <string name="notification_logo">Intercepted Notification Logo</string>
+
+    <!-- Strings related to the Alert Dialog -->
+    <string name="notification_listener_service">"Notification Listener Service"</string>
+    <string name="notification_listener_service_explanation">"For the the app. to work you need to enable the Notification Listener Service. Enable it now?"</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="permission_desc">Enable the following permissions for the app to function properly</string>
+    <string name="notification_access">Notification Access :</string>
+    <string name="notification_perm_desc">The app needs notification access in order to read and intercept Snapchat Notifications</string>
+    <string name="grant_permission_button_txt">Grant Permission</string>
+    <string name="always_allow_in_background_perm">Always allow in Background :</string>
+    <string name="always_bg_perm_desc">To effectively block Snapchat notifications, the app needs permission to always run in the background.</string>
+    <string name="disable_battery_optimisations_perm">Disable Battery Optimisations :</string>
+    <string name="optional_permission_txt">(Optional Permission)</string>
+    <string name="battery_opt_perm_desc">Some manufacturers optimize background processes extensively which can affect the working of the app. Set the battery setting to “Don’t Optimize”.</string>
+    <string name="proceed">Proceed</string>
+</resources>
