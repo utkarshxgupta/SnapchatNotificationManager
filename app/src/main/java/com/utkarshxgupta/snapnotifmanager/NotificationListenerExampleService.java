@@ -39,6 +39,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
      */
     private static String title = "";
     DatabaseHandler db;
+    private List<WhitelistModel> names;
     private static final class ApplicationPackageNames {
         public static final String SNAPCHAT_PACK_NAME = "com.snapchat.android";
     }
@@ -84,7 +85,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
 
     private boolean checkTitle() {
         db = MainActivity.db;
-        List<WhitelistModel> names = db.getAllPersons();
+        names = db.getAllPersons();
 
         for (WhitelistModel name:names) {
             if (name.getTask().equals(title))

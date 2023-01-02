@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_primary70">
+    android:background="?attr/colorPrimary">
     
     <ImageView
         android:layout_width="200dp"

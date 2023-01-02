@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -19,12 +20,15 @@ import com.utkarshxgupta.snapnotifmanager.R;
 import com.utkarshxgupta.snapnotifmanager.Utils.DatabaseHandler;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.List;
+
 public class AddNewPerson extends BottomSheetDialogFragment {
 
     public static final String TAG = "ActionBottomDialog";
     private EditText newPersonText;
     private Button newPersonSaveButton;
     private DatabaseHandler db;
+    private List<WhitelistModel> names;
 
     public static AddNewPerson newInstance() {
         return new AddNewPerson();
@@ -89,18 +93,31 @@ public class AddNewPerson extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 String text = newPersonText.getText().toString();
-
-                if (finalIsUpdate) {
-                    db.updatePerson(bundle.getInt("id"), text);
+                if (personNotExists(text)) {
+                    if (finalIsUpdate) {
+                        db.updatePerson(bundle.getInt("id"), text);
+                    }
+                    else {
+                        WhitelistModel person = new WhitelistModel();
+                        person.setTask(text);
+                        db.insertPerson(person);
+                    }
+                    dismiss();
                 }
                 else {
-                    WhitelistModel person = new WhitelistModel();
-                    person.setTask(text);
-                    db.insertPerson(person);
+                    Toast.makeText(getActivity().getApplicationContext(), "Person already exists!", Toast.LENGTH_SHORT).show();
                 }
-                dismiss();
             }
         });
+    }
+
+    private boolean personNotExists(String title) {
+        names = db.getAllPersons();
+        for (WhitelistModel name:names) {
+            if (name.getTask().equals(title))
+                return false;
+        }
+        return true;
     }
 
     @Override
