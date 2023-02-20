@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.View;
@@ -36,26 +38,19 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private List<WhitelistModel> whiteList;
     public static DatabaseHandler db;
     private TextView emptyList;
-    private boolean notifs, battery;
 
-    private static final String ENABLED_NOTIFICATION_LISTENERS = "enabled_notification_listeners";
-
-    @SuppressLint("BatteryLife")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        String packageName = getPackageName();
-        PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
-
-        notifs = isNotificationServiceEnabled();
-        battery = pm.isIgnoringBatteryOptimizations(packageName);
-
-        if (!notifs || !battery) {
-            Intent permissionsIntent = new Intent(this, PermissionXyzActivity.class);
-            startActivity(permissionsIntent);
+        Intent intent = new Intent(this, ForeService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(intent);
+        }
+        else {
+            startService(intent);
         }
 
         db = new DatabaseHandler(this);
@@ -116,23 +111,5 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         Collections.reverse(whiteList);
         tasksAdapter.setTasks(whiteList);
         tasksAdapter.notifyDataSetChanged();
-    }
-
-    private boolean isNotificationServiceEnabled(){
-        String pkgName = getPackageName();
-        final String flat = Settings.Secure.getString(getContentResolver(),
-                ENABLED_NOTIFICATION_LISTENERS);
-        if (!TextUtils.isEmpty(flat)) {
-            final String[] names = flat.split(":");
-            for (int i = 0; i < names.length; i++) {
-                final ComponentName cn = ComponentName.unflattenFromString(names[i]);
-                if (cn != null) {
-                    if (TextUtils.equals(pkgName, cn.getPackageName())) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
     }
 }

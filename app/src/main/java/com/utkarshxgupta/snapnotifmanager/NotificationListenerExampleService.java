@@ -1,7 +1,9 @@
 package com.utkarshxgupta.snapnotifmanager;
 
 import android.app.Notification;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
@@ -42,6 +44,15 @@ public class NotificationListenerExampleService extends NotificationListenerServ
     private List<WhitelistModel> names;
     private static final class ApplicationPackageNames {
         public static final String SNAPCHAT_PACK_NAME = "com.snapchat.android";
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+//        PackageManager pom = getPackageManager();
+//        pom.setComponentEnabledSetting(new ComponentName(this,com.utkarshxgupta.snapnotifmanager.NotificationListenerExampleService.class), PackageManager.COMPONENT_ENABLED_STATE_DISABLED,PackageManager.DONT_KILL_APP);
+//        pom.setComponentEnabledSetting(new ComponentName(this,com.utkarshxgupta.snapnotifmanager.NotificationListenerExampleService.class), PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP);
+
     }
 
     /*
