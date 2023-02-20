@@ -23,8 +23,8 @@ public class ForeService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent1, PendingIntent.FLAG_IMMUTABLE);
 
         Notification notification = new NotificationCompat.Builder(this, "channelID1")
-                .setContentTitle("Don't want to see this notification?")
-                .setContentText("Press and Hold the notification to disable it.")
+                .setContentTitle("Don't wish to see this?")
+                .setContentText("Press and hold the notification to disable it :)")
                 .setSmallIcon(R.drawable.ic_launcher_notification)
                 .setContentIntent(pendingIntent).build();
 

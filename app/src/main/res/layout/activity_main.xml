@@ -25,7 +25,7 @@
         android:layout_marginTop="100dp"
         android:enabled="false"
         android:padding="20dp"
-        android:text="Click the + button to add new task"
+        android:text="Click the + button to add new person"
         android:textAlignment="center"
         android:textSize="16sp"
         android:visibility="visible" />

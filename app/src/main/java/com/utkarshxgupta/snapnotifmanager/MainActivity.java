@@ -5,27 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.view.View;
-
-import android.content.ComponentName;
 import android.content.Intent;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.widget.TextView;
-
 import com.utkarshxgupta.snapnotifmanager.Adapter.WhitelistAdapter;
 import com.utkarshxgupta.snapnotifmanager.Model.WhitelistModel;
-import com.utkarshxgupta.snapnotifmanager.R;
 import com.utkarshxgupta.snapnotifmanager.Utils.DatabaseHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
